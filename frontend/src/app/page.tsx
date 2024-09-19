@@ -18,18 +18,22 @@ export default async function Home() {
     });
 
     const result = await response.json();
-    console.log(result)
-    const friends = result.data.friend;
+    const friends = result.data?.friend || [];
 
     return (
-      <div>
-        <h1>Hello World from Food App</h1>
-        <ul>
+      <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+        <h1 className="text-4xl font-bold text-blue-600 mb-8">Hello World from Food App</h1>
+        <ul className="space-y-4">
           {friends.map((friend: { name: string }) => (
-            <li key={friend.name}>{friend.name}</li>
+            <li
+              key={friend.name}
+              className="px-6 py-3 bg-white rounded-lg shadow-md hover:bg-blue-50 transition">
+              {friend.name}
+            </li>
           ))}
         </ul>
       </div>
+
     );
   } catch (error) {
     console.error('Error fetching friends:', error);
