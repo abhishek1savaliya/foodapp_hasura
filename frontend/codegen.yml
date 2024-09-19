@@ -1,0 +1,15 @@
+overwrite: true
+schema:
+  - ${HASURA_PROJECT_ENDPOINT}:
+      headers:
+        x-hasura-admin-secret: "${HASURA_ADMIN_SECRET}"
+
+documents: "queries/*.graphql"
+generates:
+  ./generated/:
+    preset: "client"
+    plugins:
+      - "typescript-document-nodes"
+  ./graphql.schema.json:
+    plugins:
+      - "introspection"
