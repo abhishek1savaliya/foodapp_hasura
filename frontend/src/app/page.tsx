@@ -2,7 +2,6 @@ import { gql } from 'urql';
 import client from './utils/client';
 import { Suspense } from 'react';
 
-// Define your GraphQL query
 const QUERY = gql`
   query {
     friend {
@@ -11,17 +10,16 @@ const QUERY = gql`
   }
 `;
 
-// Server-side data fetching function
 async function fetchFriends() {
   try {
     const result = await client.query(QUERY).toPromise();
     return result.data.friend;
-  } catch (err) {
+  } catch (err: any) {
     throw new Error(err.message);
   }
 }
 
-// Component for rendering the data
+
 export default function Home() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
@@ -33,7 +31,6 @@ export default function Home() {
   );
 }
 
-// Server Component for FriendsList
 async function FriendsList() {
   const friends = await fetchFriends();
 
@@ -48,6 +45,5 @@ async function FriendsList() {
         </li>
       ))}
     </ul>
-
   );
 }

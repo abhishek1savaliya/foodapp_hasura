@@ -1,7 +1,7 @@
-
+'use client'
+import { Provider } from "urql";
 import "./globals.css";
-
-
+import client from "./utils/client";
 
 export default function RootLayout({
   children,
@@ -13,9 +13,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-
-        {children}
-
+        <Provider value={client}>
+          {children}
+        </Provider>
       </body>
     </html>
   );
