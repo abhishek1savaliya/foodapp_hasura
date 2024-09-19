@@ -23,7 +23,7 @@ async function fetchFriends() {
 export default function Home() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      <h1 className="text-4xl font-bold text-blue-600 mb-8">Hello World from Food App</h1>
+      <h1 className="text-8xl font-bold text-blue-600 mb-8">Hello World from FOOD-APP</h1>
       <Suspense fallback={<p>Loading...</p>}>
         <FriendsList />
       </Suspense>
@@ -39,9 +39,9 @@ async function FriendsList() {
       {friends.map((friend: any) => (
         <li
           key={friend.name}
-          className="px-6 py-3 bg-gold-300 rounded-lg shadow-md hover:bg-gold-200 transition"
+          className="px-12 py-9 bg-slate-900  rounded-lg shadow-md hover:bg-gold-200 transition text-4xl"
         >
-          {friend.name}
+          <p className='text-slate-50'> {friend.name}</p>
         </li>
       ))}
     </ul>
